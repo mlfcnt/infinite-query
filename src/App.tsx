@@ -4,10 +4,10 @@ import { fetchPokemons } from "./api";
 import { PokemonCard } from "./components/PokemonCard";
 import { RefreshButton } from "./components/RefreshButton";
 
-const LIMIT = 10;
+const LIMIT = 50;
 
 function App() {
-  const { data, fetchNextPage, isPending } = useInfiniteQuery({
+  const { data, fetchNextPage, isFetching } = useInfiniteQuery({
     queryFn: ({ pageParam }) =>
       fetchPokemons({
         limit: LIMIT,
@@ -34,6 +34,7 @@ function App() {
               flexDirection: "row",
               flexWrap: "wrap",
               justifyContent: "space-around",
+              gap: "30px",
             }}
           >
             {page.map((pokemon) => (
@@ -42,7 +43,7 @@ function App() {
           </div>
         </div>
       ))}
-      <RefreshButton fetchNextPage={fetchNextPage} isPending={isPending} />
+      <RefreshButton fetchNextPage={fetchNextPage} isPending={isFetching} />
     </div>
   );
 }

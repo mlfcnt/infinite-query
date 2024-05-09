@@ -2,13 +2,12 @@ import { useEffect, useRef } from "react";
 
 type Props = {
   fetchNextPage: () => void;
-  isPending: boolean;
+  isFetching: boolean;
 };
 
-export const RefreshButton = ({ fetchNextPage, isPending }: Props) => {
+export const RefreshButton = ({ fetchNextPage, isFetching }: Props) => {
   const btnRef = useRef<HTMLButtonElement>(null);
 
-  // when btn is on the screen for the first time, fetchNextPage
   useEffect(() => {
     if (btnRef.current) {
       const observer = new IntersectionObserver(
@@ -31,11 +30,11 @@ export const RefreshButton = ({ fetchNextPage, isPending }: Props) => {
   return (
     <button
       ref={btnRef}
-      disabled={isPending}
+      disabled={isFetching}
       style={{ marginTop: "100px" }}
       onClick={() => fetchNextPage()}
     >
-      {isPending ? "🔃" : null} Show More
+      {isFetching ? "🔃" : null} Show More
     </button>
   );
 };
