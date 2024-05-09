@@ -43,7 +43,7 @@ function App() {
           </div>
         </div>
       ))}
-      <RefreshButton fetchNextPage={fetchNextPage} isPending={isFetching} />
+      <RefreshButton fetchNextPage={fetchNextPage} isFetching={isFetching} />
     </div>
   );
 }
