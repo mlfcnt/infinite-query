@@ -29,7 +29,12 @@ export const RefreshButton = ({ fetchNextPage, isPending }: Props) => {
   }, [fetchNextPage]);
 
   return (
-    <button ref={btnRef} disabled={isPending} style={{ marginTop: "100px" }}>
+    <button
+      ref={btnRef}
+      disabled={isPending}
+      style={{ marginTop: "100px" }}
+      onClick={() => fetchNextPage()}
+    >
       {isPending ? "🔃" : null} Show More
     </button>
   );
